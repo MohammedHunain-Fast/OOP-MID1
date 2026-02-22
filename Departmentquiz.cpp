@@ -28,15 +28,29 @@ class Department {
             for(int i = 0; i < numEmployees; i++) {
                 employees[i] = d.employees[i];
             }
-       }  
+       } 
+
+     void addEmployee(int id, string name) {
+        if (numEmployees < maxEmployees) {
+            employees[numEmployees] = Employee(id, name);
+            numEmployees++; 
+        } 
+        else {
+            cout << "Error: Department " << name << " is full!" << endl;
+        }
+
+} 
        ~Department() {
             delete[] employees;
        }
 };
 
 int main() {
-    Department d1("AI", "John", 201, 12);
+    Department d1("AI", "John", 201, 1);
+    d1.addEmployee(101, "Alice");
+    d1.addEmployee(102, "bob");
     Department d2 = d1;
+
 
     return 0;
 }
